@@ -27,18 +27,18 @@ function HighArrayApp()
         return find(searchKey) ? true : false; //leverages our find function to return true or false
     };
 
-    this.find = function find(searchKey)
+    this.search = function search(searchKey)
     {
-        var match;
+        var matchPos;
 
         for(var i = 0;i< nElems;i++)
         {
             if (arr[i] === searchKey) { //if we found a match, break out of the loop
-                match = arr[i];
+                matchPos = i;
                 break;
             }
         }
-        return match;
+        return matchPos;
         /*typically there are two ways this kind of function could return either null or -1(-1 typically if you're
         returning an int or long - aka a primitive type
          */
@@ -51,19 +51,15 @@ function HighArrayApp()
          you don't need to resize the array or worry about running out of space
          */
 
-        //some simple error checking for this style of code - since most arrays are fixed length
-        if (nElems === size)
-            return false;
-        else {
             arr[nElems] = value;
             nElems++;
             return true;
-        }
+
     };
 
-    this.delete = function(value)
+    this.deleteValue = function(value)
     {
-            var position = find(value); //first get the position of the value
+            var position = this.search(value); //first get the position of the value
             if (position)
             {
                 for (var i = position;i<nElems-1;i++) //move higher ones down
@@ -72,7 +68,8 @@ function HighArrayApp()
                 }
 
                 nElems = nElems - 1; //this is the way this code is keeping tracking
-
+                arr.length = nElems; //keep JS in sync
+                return true;
             }
             else
             {
@@ -111,14 +108,12 @@ function HighArrayApp()
 
     var searchKey = 35;
 
-    if (arr.exists(searchKey))
-    {
-        BrowserHelper.printMessage((arr.exists(searchKey) ? "Found item" : "Couldn't find item") + searchKey)
-    }
+    BrowserHelper.printMessage((arr.exists(searchKey) ? "Found item" : "Couldn't find item") + searchKey);
 
-    arr.delete(00);
-    arr.delete(55);
-    arr.delete(99);
+
+    arr.deleteValue(00);
+    arr.deleteValue(55);
+    arr.deleteValue(99);
 
     arr.printArray();
 

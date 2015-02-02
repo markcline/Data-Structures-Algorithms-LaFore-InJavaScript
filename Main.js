@@ -85,7 +85,7 @@ simpleRouter : function() {
     switch (newTarget) {
         case "Listing23":
         {
-            new HighArrayApp(10);
+            new HighArrayApp();
             break;
         }
         case "About":
