@@ -83,18 +83,40 @@ simpleRouter : function() {
     $("#content").empty();
 
     switch (newTarget) {
+        case "Listing24":
+        {
+            new OrderedArrayApp();
+            break;
+        }
         case "Listing23":
         {
             new HighArrayApp();
             break;
         }
-        case "About":
+        case "Listing25":
+        {
+            new ClassDataArrayApp();
+            break;
+        }
+
+        case "": //default to about page
         {
             $(function () {
                 $.get("fragments/About.html", function (data) {
                     $("#content").append(data);
                 });
             });
+            break;
+        }
+
+        default:
+        {
+            $(function () {
+                $.get("fragments/NotFound.html", function (data) {
+                    $("#content").append(data);
+                });
+            });
+            break;
         }
 
     }
@@ -102,6 +124,8 @@ simpleRouter : function() {
 
 initialize: function () {
     $(window).on('hashchange', MainApp.simpleRouter);
+
+    MainApp.simpleRouter();
 }
 };
 

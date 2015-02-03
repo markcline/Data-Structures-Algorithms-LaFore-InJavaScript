@@ -11,11 +11,11 @@ function HighArrayApp()
 {
 
     $("#content").append('<div class="page-header">' +
-    '<h1>Chapter 2 - Listing2.3 - High Array</h1>' +
+    '<h1>Chapter 2 - Listing 2.3 - High Array</h1>' +
     '<span><p>A somewhat more object oriented example of working with basic arrays' +
-    '</p><strong>NOTE:</strong><p>As with most examples, this is for learning purposes and doesn\'t represent' +
-    'the best way to accomplish something in Javascript (JS arrays support pretty much' +
-    'of all this functionality natively</p></span></div>');
+    '</p><strong>NOTE:</strong><p>As with most examples, this is for learning purposes and doesn\'t represent ' +
+    'the best way to accomplish something in Javascript (JS arrays support pretty much ' +
+    'all of this functionality natively</p></span></div>');
 
     var arr = new Array(size); //you wouldn't typically write it this way in JS, but keeping consistency with book
 
@@ -24,7 +24,7 @@ function HighArrayApp()
 
     this.exists = function(searchKey)
     {
-        return find(searchKey) ? true : false; //leverages our find function to return true or false
+        return this.search(searchKey) !== -1; //leverages our find function to return true or false
     };
 
     this.search = function search(searchKey)
@@ -35,13 +35,12 @@ function HighArrayApp()
         {
             if (arr[i] === searchKey) { //if we found a match, break out of the loop
                 matchPos = i;
-                break;
+                return matchPos;
             }
         }
-        return matchPos;
-        /*typically there are two ways this kind of function could return either null or -1(-1 typically if you're
-        returning an int or long - aka a primitive type
-         */
+
+        return -1; //return -1 to indicate that we didn't find it
+
 
     };
 
@@ -60,7 +59,7 @@ function HighArrayApp()
     this.deleteValue = function(value)
     {
             var position = this.search(value); //first get the position of the value
-            if (position)
+            if (position !== -1)
             {
                 for (var i = position;i<nElems-1;i++) //move higher ones down
                 {
