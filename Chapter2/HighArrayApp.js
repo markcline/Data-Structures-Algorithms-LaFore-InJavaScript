@@ -5,7 +5,7 @@
 to show the underlying parts
  */
 
-function HighArrayApp()
+(function HighArrayApp()
 {
     function HighArray(size) //inner function - doesn't pollute global namespace
 {
@@ -116,4 +116,4 @@ function HighArrayApp()
 
     arr.printArray();
 
-}
+})();

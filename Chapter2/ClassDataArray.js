@@ -5,7 +5,7 @@
  to show the underlying parts
  */
 
-function ClassDataArrayApp()
+(function ClassDataArrayApp()
 {
 
     function ClassDataArray(size) //inner function - doesn't pollute global namespace
@@ -157,4 +157,4 @@ function ClassDataArrayApp()
 
     arr.printArray();
 
-}
+})();

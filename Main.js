@@ -77,27 +77,26 @@ var BrowserHelper = {
 };
 
 var MainApp = {
+
+//very simple router to handle page transitions
 simpleRouter : function() {
     var newTarget = window.location.hash.replace("#", "");
+
+    var URL;
+    URL = {
+        "Listing34": "Chapter3/ObjectSort.js",
+        "Listing24": "Chapter2/OrderedArrayApp.js",
+        "Listing23": "Chapter2/HighArrayApp.js",
+        "Listing25" : "Chapter2/ClassDataArray.js",
+        "Listing31" : "Chapter3/BubbleSortApp.js",
+        "Listing32" : "Chapter3/SelectionSort.js",
+        "Listing33" : "Chapter3/InsertSort.js"
+
+    };
 
     $("#content").empty();
 
     switch (newTarget) {
-        case "Listing24":
-        {
-            new OrderedArrayApp();
-            break;
-        }
-        case "Listing23":
-        {
-            new HighArrayApp();
-            break;
-        }
-        case "Listing25":
-        {
-            new ClassDataArrayApp();
-            break;
-        }
 
         case "": //default to about page
         {
@@ -111,11 +110,28 @@ simpleRouter : function() {
 
         default:
         {
-            $(function () {
-                $.get("fragments/NotFound.html", function (data) {
-                    $("#content").append(data);
+
+            var newURL = URL[newTarget];
+
+            //not found in map
+            if (!newURL) {
+                $(function () {
+                    $.get("fragments/NotFound.html", function (data) {
+                        $("#content").append(data);
+                    });
                 });
-            });
+            }
+            else
+            {
+                $.getScript(newURL).fail(
+
+                    function () {
+                        $.get("fragments/NotFound.html", function (data) {
+                            $("#content").append(data);
+                        });
+                    }
+                );
+            }
             break;
         }
 

@@ -5,7 +5,7 @@
  to show the underlying parts
  */
 
-function OrderedArrayApp()
+(function OrderedArrayApp()
 {
     function OrderedArray(size) //inner function - doesn't pollute global namespace
     {
@@ -163,4 +163,4 @@ function OrderedArrayApp()
 
     arr.printArray();
 
-}
+})();
