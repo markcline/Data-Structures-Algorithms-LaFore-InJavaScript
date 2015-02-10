@@ -1,0 +1,24 @@
+<style>
+    .top-buffer {
+        margin-top: 20px;
+    }
+
+</style>
+<div class="container">
+    <form method="post" id="form">
+        <div class="row top-buffer">
+            <label for="inputString" class="sr-only">Insert string to check:</label>
+
+            <div class="input-group">
+                <textarea rows="20" cols="50" class="form-control" id="inputString"
+                          placeholder="Insert string to check:"></textarea>
+                <input class="btn btn-default" type="submit" value="Submit"/>
+            </div>
+            <div class="row top-buffer">
+                <div class="col-md-6">
+                    <div id="result"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

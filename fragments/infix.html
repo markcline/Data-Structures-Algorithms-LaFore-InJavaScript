@@ -1,0 +1,28 @@
+<style>
+    .top-buffer {
+        margin-top: 20px;
+    }
+
+</style>
+<div class="container">
+    <div class="row top-buffer">
+        <div class="col-md-6">
+            <form method="post" id="form">
+
+                <label for="inputString" class="sr-only">Insert math to calculate</label>
+
+                <div class="input-group">
+                    <input class="form-control" id="inputString" type="text" placeholder="Insert math to calculate:"/>
+            <span class="input-group-btn">
+    <input class="btn btn-default" type="submit" value="Submit"/>
+                </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="col-md-6">
+            <p>Postfix Results:<span id="result"></span></p>
+        </div>
+    </div>
+</div>
